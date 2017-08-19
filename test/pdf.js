@@ -2,8 +2,9 @@ const { expect, it, experiment, after } = exports.lab = require('lab').script();
 const removeDir = require('../lib/helpers/removeDir');
 
 const Server = require('../index');
+const config = require('../config');
 
-process.env.PORT = 4000;
+const authorizationHeader = `Basic ${config.keys[0]}`;
 
 experiment('PDF', () => {
     it('Should return a forbidden with missing API key', (done) => {
@@ -37,7 +38,7 @@ experiment('PDF', () => {
             method: 'POST',
             url: '/pdf',
             headers: {
-                authorization: 'Basic adprAlKJearJbKZhxb7xrDTXJytqsvXTIQ0c1lKl',
+                authorization: authorizationHeader,
             },
         }, (response) => {
             expect(response.statusCode).to.equal(400);
@@ -55,7 +56,7 @@ experiment('PDF', () => {
                 url: 'wrong.url',
             },
             headers: {
-                authorization: 'Basic adprAlKJearJbKZhxb7xrDTXJytqsvXTIQ0c1lKl',
+                authorization: authorizationHeader,
             },
         }, (response) => {
             expect(response.statusCode).to.equal(400);
@@ -73,7 +74,7 @@ experiment('PDF', () => {
                 url: 'https://www.wiljanslofstra.com/',
             },
             headers: {
-                authorization: 'Basic adprAlKJearJbKZhxb7xrDTXJytqsvXTIQ0c1lKl',
+                authorization: authorizationHeader,
             },
         }, (response) => {
             expect(response.statusCode).to.equal(200);
@@ -91,7 +92,7 @@ experiment('PDF', () => {
                 html: '<h1>Hello world</h1>',
             },
             headers: {
-                authorization: 'Basic adprAlKJearJbKZhxb7xrDTXJytqsvXTIQ0c1lKl',
+                authorization: authorizationHeader,
             },
         }, (response) => {
             expect(response.statusCode).to.equal(200);
@@ -119,7 +120,7 @@ experiment('PDF', () => {
                 'margin.right': '5cm',
             },
             headers: {
-                authorization: 'Basic adprAlKJearJbKZhxb7xrDTXJytqsvXTIQ0c1lKl',
+                authorization: authorizationHeader,
             },
         }, (response) => {
             expect(response.statusCode).to.equal(200);
