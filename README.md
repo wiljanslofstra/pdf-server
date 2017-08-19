@@ -12,10 +12,10 @@ array of API keys, this allows to make multiple keys when necessary.
 You pass the API key as Authorization header on the request:
 
 ```
-Authorization: Basic API_KEY_HERO
+Authorization: Basic API_KEY_HERE
 ```
 
-### /pdf
+## /pdf
 
 ```
 url               required|optional  URL of the page to render, use when HTML is not given
@@ -89,7 +89,7 @@ if ($err) {
 }
 ```
 
-### /screenshot
+## /screenshot
 
 ```
 url             required   Valid URL to be rendered
