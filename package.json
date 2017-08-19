@@ -14,6 +14,8 @@
   "dependencies": {
     "boom": "^5.2.0",
     "hapi": "^16.5.2",
+    "lodash": "^4.17.4",
+    "moment": "^2.18.1",
     "nodemon": "^1.11.0",
     "puppeteer": "^0.9.0"
   }

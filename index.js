@@ -3,14 +3,28 @@ const Hapi = require('hapi');
 const server = new Hapi.Server();
 server.connection({ port: 3000, host: 'localhost' });
 
-const handlePDF = require('./lib/handlePDF');
+const handlePDF = require('./lib/pdf');
+const handleScreenshot = require('./lib/screenshot');
 
 server.register(require('./lib/auth'), (err) => {
     server.auth.strategy('simple', 'basic');
 
     server.route({
         method: 'POST',
-        path: '/',
+        path: '/screenshot',
+        handler: handleScreenshot,
+        config: {
+            auth: {
+                mode: 'required',
+                strategies: ['simple'],
+                payload: 'required',
+            },
+        },
+    });
+
+    server.route({
+        method: 'POST',
+        path: '/pdf',
         handler: handlePDF,
         config: {
             auth: {
