@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "watch": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "lab"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +14,7 @@
   "dependencies": {
     "boom": "^5.2.0",
     "hapi": "^16.5.2",
+    "lab": "^14.2.0",
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
     "nodemon": "^1.11.0",

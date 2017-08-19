@@ -1,7 +1,13 @@
 const Hapi = require('hapi');
 
 const server = new Hapi.Server();
-server.connection({ port: 3000, host: 'localhost' });
+let port = process.env.PORT || 3000;
+
+if (process.env.NODE_ENV === 'test') {
+    port = 4000;
+}
+
+server.connection({ port, host: 'localhost' });
 
 const handlePDF = require('./lib/pdf');
 const handleScreenshot = require('./lib/screenshot');
@@ -43,3 +49,5 @@ server.start((err) => {
     }
     console.log(`Server running at: ${server.info.uri}`);
 });
+
+module.exports = server;
