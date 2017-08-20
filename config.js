@@ -1,6 +1,6 @@
 module.exports = {
     whitelist: [
-        'orangetalent.nl',
+        'www.wiljanslofstra.com',
     ],
     keys: [
         'adprAlKJearJbKZhxb7xrDTXJytqsvXTIQ0c1lKl',

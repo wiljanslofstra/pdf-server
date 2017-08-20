@@ -7,54 +7,11 @@ const config = require('../config');
 const authorizationHeader = `Basic ${config.keys[0]}`;
 
 experiment('PDF', () => {
-    it('Should return a forbidden with missing API key', (done) => {
-
-        Server.inject({
-            method: 'POST',
-            url: '/pdf'
-        }, (response) => {
-            expect(response.statusCode).to.equal(401);
-            done();
-        });
-    });
-
-    it('Should return forbidden with a wrong API key', (done) => {
-
-        Server.inject({
-            method: 'POST',
-            url: '/pdf',
-            headers: {
-                authorization: 'Basic 123456',
-            },
-        }, (response) => {
-            expect(response.statusCode).to.equal(401);
-            done();
-        });
-    });
-
     it('Should return an error when no URL is given', (done) => {
 
         Server.inject({
             method: 'POST',
             url: '/pdf',
-            headers: {
-                authorization: authorizationHeader,
-            },
-        }, (response) => {
-            expect(response.statusCode).to.equal(400);
-            expect(response.result.error).to.equal('Bad Request');
-            done();
-        });
-    });
-
-    it('Should return an error when a wrong URL is given', (done) => {
-
-        Server.inject({
-            method: 'POST',
-            url: '/pdf',
-            payload: {
-                url: 'wrong.url',
-            },
             headers: {
                 authorization: authorizationHeader,
             },

@@ -1,5 +1,4 @@
 const { expect, it, experiment, after } = exports.lab = require('lab').script();
-const removeDir = require('../lib/helpers/removeDir');
 
 const pdfOptions = require('../lib/pdfOptions');
 const config = require('../config');

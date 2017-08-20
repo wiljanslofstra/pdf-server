@@ -3,9 +3,7 @@
 Create PDF files from HTML or a URL. It uses the new Puppeteer framework from the
 Chrome team to render pages on a Chromium headless browser.
 
-## Usage
-
-### Authorization
+## Authorization
 
 Authorizing to make PDF requests is very simple, in the config.js file there's an
 array of API keys, this allows to make multiple keys when necessary.
@@ -14,6 +12,17 @@ You pass the API key as Authorization header on the request:
 ```
 Authorization: Basic API_KEY_HERE
 ```
+
+## Config
+
+**Whitelist**
+
+Contains the URLs that are allowed as source to generate screenshots and PDFs for. It checks against
+the URL hostname in the request. Setting whitelist to false will disable the checks.
+
+**Keys**
+
+Contains API keys for the request see 'Authorization' above.
 
 ## /pdf
 
@@ -147,4 +156,12 @@ if ($err) {
         "time": 2068
     }
 }
+```
+
+## Tests
+
+The're a few functional tests for the /pdf endpoint and the authorization layer.
+
+```
+npm test
 ```
