@@ -1,7 +1,5 @@
 module.exports = {
-    whitelist: [
-        'www.wiljanslofstra.com',
-    ],
+    whitelist: false,
     keys: [
         'adprAlKJearJbKZhxb7xrDTXJytqsvXTIQ0c1lKl',
     ],

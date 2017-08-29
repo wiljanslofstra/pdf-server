@@ -3,6 +3,8 @@ const Hapi = require('hapi');
 const server = new Hapi.Server();
 let port = process.env.PORT || 3000;
 
+global.BASE_PATH = __dirname;
+
 if (process.env.NODE_ENV === 'test') {
     port = 4000;
 }
