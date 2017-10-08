@@ -1,4 +1,6 @@
 const Hapi = require('hapi');
+const Inert = require('inert');
+const path = require('path');
 
 const server = new Hapi.Server();
 let port = process.env.PORT || 3000;
@@ -14,7 +16,20 @@ server.connection({ port, host: 'localhost' });
 const handlePDF = require('./lib/pdf');
 const handleScreenshot = require('./lib/screenshot');
 
-server.register(require('./lib/auth'), (err) => {
+server.register(Inert, (err) => {
+    server.route({
+        method: 'GET',
+        path: '/pdf_output/{file*}',
+        handler: {
+            directory: {
+                path: path.resolve(global.BASE_PATH, 'pdf_output'),
+                listing: true,
+            }
+        }
+    });
+});
+
+server.register([require('./lib/auth')], (err) => {
     server.auth.strategy('simple', 'basic');
 
     server.route({
